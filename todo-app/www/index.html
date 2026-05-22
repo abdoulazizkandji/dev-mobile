@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Todo App</title>
+
+    <!-- jQuery UI theme -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/cupertino/jquery-ui.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- header -->
+    <div class="header">
+        <div>
+            <h1>My Task</h1>
+            <p id="dateLabel" class="date-label"></p>
+        </div>
+        <button id="themeBtn">🌙</button>
+    </div>
+
+    <!-- stats -->
+    <div class="stats">
+        <div class="stat-box">
+            <span class="stat-title">Total taches</span>
+            <span class="stat-num" id="statTotal">0</span>
+        </div>
+        <div class="stat-box stat-box-purple">
+            <span class="stat-title">En cours</span>
+            <span class="stat-num" id="statEnCours">0</span>
+        </div>
+    </div>
+
+    <!-- filtres -->
+    <div class="filters">
+        <button class="f-btn active" data-f="all">Toutes</button>
+        <button class="f-btn" data-f="todo">En cours</button>
+        <button class="f-btn" data-f="done">Terminées</button>
+    </div>
+
+    <!-- barre de progression -->
+    <div class="prog-wrap">
+        <div class="prog-bar" id="progBar"></div>
+    </div>
+    <small id="progText">0 / 0</small>
+
+    <!-- la liste -->
+    <ul id="taskList"></ul>
+
+</div>
+
+<!-- bouton ajouter flottant -->
+<button id="fabBtn">+</button>
+
+<!-- zone d ajout -->
+<div id="addZone" style="display:none">
+    <div class="add-inner">
+        <h3>Nouvelle tâche</h3>
+        <input type="text" id="taskInput" placeholder="ex: Finir le rapport...">
+        <select id="prioritySelect">
+            <option value="low">Faible</option>
+            <option value="medium" selected>Moyenne</option>
+            <option value="high">Haute</option>
+        </select>
+        <div class="add-btns">
+            <button id="cancelBtn">Annuler</button>
+            <button id="addBtn">Ajouter</button>
+        </div>
+    </div>
+</div>
+
+<!-- dialog edit jquery ui -->
+<div id="editDialog" style="display:none">
+    <input type="text" id="editInput" style="width:100%;height:40px;padding:0 10px;border:1.5px solid #ddd;border-radius:8px;font-size:15px;margin-top:6px">
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="cordova.js"></script>
+<script src="js/index.js"></script>
+
+</body>
+</html>

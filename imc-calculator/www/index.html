@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Calculateur IMC</title>
+
+  <!-- jQuery Mobile CSS (local) -->
+  <link rel="stylesheet" href="lib/jquery.mobile.min.css">
+
+  <!-- Styles personnalisés -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- PAGE PRINCIPALE -->
+  <div data-role="page" id="page-accueil" data-theme="b">
+
+    <!-- En-tête -->
+    <div data-role="header" data-theme="b">
+      <h1>Calculateur IMC</h1>
+    </div>
+
+    <!-- Contenu principal -->
+    <div data-role="content">
+
+      <h2 class="titre-section">Entrez vos mesures</h2>
+
+      <!-- Formulaire de saisie -->
+      <div data-role="fieldcontain">
+        <label for="poids">Poids (kg)</label>
+        <input type="number" id="poids" name="poids"
+               placeholder="Ex : 70" min="1" max="300" step="0.1">
+      </div>
+
+      <div data-role="fieldcontain">
+        <label for="taille">Taille (cm)</label>
+        <input type="number" id="taille" name="taille"
+               placeholder="Ex : 175" min="50" max="250" step="1">
+      </div>
+
+      <!-- Bouton de calcul -->
+      <button data-role="button" data-theme="b" id="btn-calculer"
+              onclick="calculerIMC()">
+        Calculer mon IMC
+      </button>
+
+      <!-- Zone de résultat (cachée au départ) -->
+      <div id="zone-resultat" style="display:none;">
+
+        <div data-role="collapsible" data-collapsed="false" data-theme="a">
+          <h3>Votre résultat</h3>
+
+          <div class="resultat-imc">
+            <p class="valeur-imc" id="valeur-imc">--</p>
+            <p class="unite-imc">IMC (kg/m²)</p>
+          </div>
+
+          <div class="interpretation" id="interpretation">
+            <!-- Rempli dynamiquement par JS -->
+          </div>
+
+        </div>
+
+        <!-- Tableau de référence -->
+        <div data-role="collapsible" data-collapsed="true" data-theme="a">
+          <h3>Tableau de référence</h3>
+          <table class="tableau-ref">
+            <thead>
+              <tr>
+                <th>IMC</th>
+                <th>Catégorie</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="ref-denutrition"><td>&lt; 16.5</td><td>Dénutrition</td></tr>
+              <tr class="ref-maigreur"><td>16.5 — 18.5</td><td>Maigreur</td></tr>
+              <tr class="ref-normal"><td>18.5 — 25</td><td>Poids normal ✓</td></tr>
+              <tr class="ref-surpoids"><td>25 — 30</td><td>Surpoids</td></tr>
+              <tr class="ref-ob-mod"><td>30 — 35</td><td>Obésité modérée</td></tr>
+              <tr class="ref-ob-sev"><td>35 — 40</td><td>Obésité sévère</td></tr>
+              <tr class="ref-ob-mas"><td>&gt; 40</td><td>Obésité massive / morbide</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bouton réinitialiser -->
+        <button data-role="button" data-theme="c" onclick="reinitialiser()">
+          Recommencer
+        </button>
+
+      </div><!-- fin zone-resultat -->
+
+    </div><!-- fin content -->
+
+    <!-- Pied de page -->
+    <div data-role="footer" data-theme="b">
+      <h4>M2 SRT — ESP UCAD 2025–2026</h4>
+    </div>
+
+  </div><!-- fin page -->
+
+  <!-- jQuery + jQuery Mobile JS (local) -->
+  <script src="lib/jquery.min.js"></script>
+  <script src="lib/jquery.mobile.min.js"></script>
+
+  <!-- Cordova -->
+  <script src="cordova.js"></script>
+
+  <!-- Notre logique applicative -->
+  <script src="js/imc.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+/* ============================================
+   Calculateur IMC — Styles personnalisés
+   Inspiré du thème ThemeRoller jQuery Mobile
+   ============================================ */
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f0f4f8;
+}
+
+/* En-tête */
+.ui-header h1 {
+  font-size: 1.3em;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Titre section */
+.titre-section {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 1.1em;
+  margin: 15px 0 10px;
+  font-weight: 600;
+}
+
+/* Logo */
+.logo-container {
+  text-align: center;
+  padding: 15px 0 5px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+/* Champs de saisie */
+.ui-input-text input,
+input[type="number"] {
+  font-size: 1.1em;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Bouton calculer */
+#btn-calculer {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: 10px;
+  margin-top: 15px;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+#btn-calculer:active {
+  background: #2471a3;
+  transform: scale(0.98);
+}
+
+/* Zone résultat */
+#zone-resultat {
+  margin-top: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Valeur IMC */
+.resultat-imc {
+  text-align: center;
+  padding: 20px;
+  margin: 10px 0;
+}
+
+.valeur-imc {
+  font-size: 3.5em;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0;
+  line-height: 1;
+}
+
+.unite-imc {
+  font-size: 0.85em;
+  color: #7f8c8d;
+  margin-top: 4px;
+}
+
+/* Bloc interprétation */
+.interpretation {
+  text-align: center;
+  padding: 15px;
+  border-radius: 12px;
+  margin: 10px 0;
+  font-size: 1.05em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Couleurs par catégorie */
+.cat-denutrition  { background: #8e44ad; color: white; }
+.cat-maigreur     { background: #e67e22; color: white; }
+.cat-normal       { background: #27ae60; color: white; }
+.cat-surpoids     { background: #f1c40f; color: #2c3e50; }
+.cat-ob-moderee   { background: #e67e22; color: white; }
+.cat-ob-severe    { background: #e74c3c; color: white; }
+.cat-ob-massive   { background: #922b21; color: white; }
+
+/* Tableau de référence */
+.tableau-ref {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+.tableau-ref th {
+  background: #2c3e50;
+  color: white;
+  padding: 8px;
+  text-align: left;
+}
+
+.tableau-ref td {
+  padding: 7px 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tableau-ref tr:nth-child(even) { background: #f8f9fa; }
+
+/* Ligne en surbrillance dans le tableau */
+.ref-denutrition td { color: #8e44ad; font-weight: 500; }
+.ref-maigreur td    { color: #e67e22; font-weight: 500; }
+.ref-normal td      { color: #27ae60; font-weight: bold; }
+.ref-surpoids td    { color: #d4ac0d; font-weight: 500; }
+.ref-ob-mod td      { color: #e67e22; font-weight: 500; }
+.ref-ob-sev td      { color: #e74c3c; font-weight: 500; }
+.ref-ob-mas td      { color: #922b21; font-weight: bold; }
+
+/* Surbrillance de la ligne active */
+.ligne-active td {
+  background: rgba(52, 152, 219, 0.15);
+  font-weight: bold;
+  border-left: 3px solid #3498db;
+}
+
+/* Message d'erreur */
+.message-erreur {
+  background: #fee;
+  border: 1px solid #e74c3c;
+  border-radius: 8px;
+  padding: 10px 15px;
+  color: #c0392b;
+  text-align: center;
+  margin: 10px 0;
+  font-size: 0.95em;
+}
+
+/* Pied de page */
+.ui-footer h4 {
+  font-size: 0.75em;
+  text-align: center;
+  color: rgba(255,255,255,0.8);
+}
+
+/* Responsive pour petits écrans */
+@media screen and (max-width: 360px) {
+  .valeur-imc { font-size: 2.8em; }
+  .interpretation { font-size: 0.95em; }
+}
