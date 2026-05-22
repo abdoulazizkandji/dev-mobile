@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestion des Contacts — Démo</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: #0f1117;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      gap: 48px;
+      padding: 32px 24px;
+    }
+
+    /* ===== PANNEAU GAUCHE : INFOS ===== */
+    .info-panel {
+      color: #fff;
+      max-width: 320px;
+      flex-shrink: 0;
+    }
+
+    .info-panel .tag {
+      display: inline-block;
+      background: #1a6ed8;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .info-panel h1 {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .info-panel h1 span {
+      color: #1a6ed8;
+    }
+
+    .info-panel .subtitle {
+      font-size: 14px;
+      color: #8899aa;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .tech-stack {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .tech-badge {
+      background: #1c2333;
+      border: 1px solid #2d3a50;
+      color: #a0b4cc;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #c0cfe0;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      background: #1a6ed8;
+      color: #fff;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ===== CADRE TÉLÉPHONE ===== */
+    .phone-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .phone-shell {
+      width: 375px;
+      height: 812px;
+      background: #1a1a1a;
+      border-radius: 52px;
+      padding: 14px;
+      box-shadow:
+        0 0 0 2px #333,
+        0 0 0 4px #222,
+        0 30px 80px rgba(0,0,0,0.7),
+        inset 0 0 0 1px #444;
+      position: relative;
+    }
+
+    /* Boutons latéraux */
+    .phone-shell::before {
+      content: "";
+      position: absolute;
+      left: -4px;
+      top: 120px;
+      width: 4px;
+      height: 36px;
+      background: #2a2a2a;
+      border-radius: 3px 0 0 3px;
+      box-shadow: 0 50px 0 #2a2a2a, 0 100px 0 #2a2a2a;
+    }
+
+    .phone-shell::after {
+      content: "";
+      position: absolute;
+      right: -4px;
+      top: 160px;
+      width: 4px;
+      height: 70px;
+      background: #2a2a2a;
+      border-radius: 0 3px 3px 0;
+    }
+
+    /* Ecran intérieur */
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      border-radius: 40px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Notch */
+    .notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 28px;
+      background: #1a1a1a;
+      border-radius: 0 0 18px 18px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .notch-cam {
+      width: 10px; height: 10px;
+      background: #2a2a2a;
+      border-radius: 50%;
+      border: 2px solid #333;
+    }
+
+    .notch-speaker {
+      width: 40px; height: 4px;
+      background: #2a2a2a;
+      border-radius: 2px;
+    }
+
+    /* L'iframe de l'app */
+    .phone-screen iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 40px;
+    }
+
+    /* ===== FOOTER ===== */
+    .page-footer {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #3a4a5a;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Panneau info gauche -->
+  <div class="info-panel">
+    <span class="tag">Projet Mobile</span>
+    <h1>Gestion des<br /><span>Contacts</span></h1>
+    <p class="subtitle">
+      Application web mobile développée avec jQuery Mobile
+      et un thème ThemeRoller personnalisé. Fonctionne
+      directement dans le navigateur sans installation.
+    </p>
+
+    <div class="tech-stack">
+      <span class="tech-badge">HTML5</span>
+      <span class="tech-badge">CSS3</span>
+      <span class="tech-badge">JavaScript</span>
+      <span class="tech-badge">jQuery Mobile</span>
+      <span class="tech-badge">ThemeRoller</span>
+    </div>
+
+    <ul class="feature-list">
+      <li>Liste triée alphabétiquement</li>
+      <li>Recherche en temps réel</li>
+      <li>Ajouter / Modifier / Supprimer</li>
+      <li>Codes couleur par groupe</li>
+      <li>Navigation multi-pages fluide</li>
+      <li>Interface 100% responsive</li>
+    </ul>
+  </div>
+
+  <!-- Cadre téléphone -->
+  <div class="phone-wrap">
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="notch">
+          <div class="notch-cam"></div>
+          <div class="notch-speaker"></div>
+        </div>
+        <iframe src="index.html" title="Application Gestion des Contacts"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">Abdoul Aziz KANDJI — M2 Génie Informatique — ESP/UCAD 2026</div>
+
+</body>
+</html>

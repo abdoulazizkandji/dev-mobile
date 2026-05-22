@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestion des Contacts</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.css" />
+  <link rel="stylesheet" href="theme.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+
+<!-- PAGE 1 : LISTE -->
+<div data-role="page" id="page-liste">
+  <div data-role="header" data-theme="b">
+    <h1> Mes Contacts</h1>
+    <a href="#page-form" data-role="button" data-icon="plus" data-iconpos="notext"
+       class="ui-btn-right" id="btn-goto-add">Ajouter</a>
+  </div>
+  <div data-role="content">
+    <div class="search-wrap">
+      <input type="search" id="recherche" placeholder="Rechercher..." />
+    </div>
+    <div id="liste-contacts"></div>
+  </div>
+  <div data-role="footer" data-theme="b" data-position="fixed">
+    <h4 id="footer-count">0 contact(s)</h4>
+  </div>
+</div>
+
+
+<!-- PAGE 2 : FORMULAIRE -->
+<div data-role="page" id="page-form">
+  <div data-role="header" data-theme="b">
+    <a href="#page-liste" data-role="button" data-icon="arrow-l" data-iconpos="notext">Retour</a>
+    <h1 id="form-titre">Nouveau contact</h1>
+  </div>
+  <div data-role="content">
+    <form id="contact-form">
+      <input type="hidden" id="contact-id" />
+      <div data-role="fieldcontain">
+        <label for="f-prenom">Prénom *</label>
+        <input type="text" id="f-prenom" placeholder="Prénom" />
+      </div>
+      <div data-role="fieldcontain">
+        <label for="f-nom">Nom *</label>
+        <input type="text" id="f-nom" placeholder="Nom" />
+      </div>
+      <div data-role="fieldcontain">
+        <label for="f-tel">Téléphone *</label>
+        <input type="tel" id="f-tel" placeholder="+221 77 000 00 00" />
+      </div>
+      <div data-role="fieldcontain">
+        <label for="f-email">Email</label>
+        <input type="email" id="f-email" placeholder="email@exemple.com" />
+      </div>
+      <div data-role="fieldcontain">
+        <label for="f-adresse">Adresse</label>
+        <input type="text" id="f-adresse" placeholder="Dakar, Sénégal" />
+      </div>
+      <div data-role="fieldcontain">
+        <label for="f-groupe">Groupe</label>
+        <select id="f-groupe" data-native-menu="false">
+          <option value="">-- Aucun --</option>
+          <option value="Famille">Famille</option>
+          <option value="Amis">Amis</option>
+          <option value="Travail">Travail</option>
+          <option value="École">École</option>
+        </select>
+      </div>
+      <div class="form-actions">
+        <a href="#page-liste" data-role="button" data-theme="a">Annuler</a>
+        <a href="#" data-role="button" data-theme="b" id="btn-save">💾 Enregistrer</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- PAGE 3 : DÉTAIL -->
+<div data-role="page" id="page-detail">
+  <div data-role="header" data-theme="b">
+    <a href="#page-liste" data-role="button" data-icon="arrow-l" data-iconpos="notext">Retour</a>
+    <h1>Détail</h1>
+  </div>
+  <div data-role="content">
+    <div class="detail-top">
+      <div class="detail-avatar" id="d-avatar"></div>
+      <h2 id="d-nom-complet"></h2>
+      <span class="detail-groupe" id="d-groupe"></span>
+    </div>
+
+    <ul data-role="listview" data-inset="true" class="detail-list">
+      <li>
+        <span class="detail-icon-wrap">📞</span>
+        <div class="detail-field">
+          <small>Téléphone</small>
+          <strong id="d-tel"></strong>
+        </div>
+      </li>
+      <li>
+        <span class="detail-icon-wrap">✉️</span>
+        <div class="detail-field">
+          <small>Email</small>
+          <strong id="d-email"></strong>
+        </div>
+      </li>
+      <li>
+        <span class="detail-icon-wrap">📍</span>
+        <div class="detail-field">
+          <small>Adresse</small>
+          <strong id="d-adresse"></strong>
+        </div>
+      </li>
+    </ul>
+
+    <div class="detail-actions">
+      <a href="#" data-role="button" data-theme="b" data-icon="edit"
+         id="btn-modifier">Modifier</a>
+      <a href="#" data-role="button" data-theme="a" data-icon="delete"
+         onclick="supprimerContact(); return false;">Supprimer</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

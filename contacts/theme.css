@@ -1,0 +1,52 @@
+/*
+ * Thème personnalisé inspiré jQuery Mobile ThemeRoller
+ * Swatch A = rouge/danger, Swatch B = bleu principal
+ */
+
+/* Swatch B - Header / Bouton principal */
+.ui-bar-b,
+.ui-btn-b,
+[data-theme="b"].ui-bar,
+[data-theme="b"].ui-btn {
+  background-color: #1a6ed8 !important;
+  border-color: #1558b0 !important;
+  color: #fff !important;
+  text-shadow: none !important;
+}
+
+.ui-btn-b:hover,
+[data-theme="b"].ui-btn:hover {
+  background-color: #1558b0 !important;
+}
+
+/* Swatch A - Bouton danger */
+.ui-bar-a,
+.ui-btn-a,
+[data-theme="a"].ui-bar,
+[data-theme="a"].ui-btn {
+  background-color: #c0392b !important;
+  border-color: #a93226 !important;
+  color: #fff !important;
+  text-shadow: none !important;
+}
+
+.ui-btn-a:hover {
+  background-color: #a93226 !important;
+}
+
+/* Footer */
+.ui-footer {
+  background-color: #1a2d50 !important;
+  border-color: #152540 !important;
+  color: #cdd8f0 !important;
+}
+
+/* Listview items */
+.ui-listview > .ui-li-static,
+.ui-listview .ui-li-has-count {
+  border-bottom: 1px solid #e8ecf0;
+}
+
+.ui-listview .ui-li-static:last-child {
+  border-bottom: none;
+}
